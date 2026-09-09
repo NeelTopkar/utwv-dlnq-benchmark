@@ -1,0 +1,40 @@
+CONDITIONAL dlnq ANALYSIS REPORT
+================================
+
+Metric:
+  dlnq = ln(q_UUT / q_LUT)
+  Less negative / closer to zero means a flatter vertical q profile.
+  More negative means a steeper decrease from LUT to UUT.
+
+Important caveat:
+  These are descriptive results; bootstrap_intervals.py is still needed for confidence intervals.
+
+1. SST-only steepening summary
+------------------------------
+  sst_297_300: n=2174, median dlnq=-1.5679, IQR=[-1.8182, -1.3539]
+  sst_300_303: n=2377, median dlnq=-1.8323, IQR=[-2.0094, -1.6296]
+  sst_303_305: n=1697, median dlnq=-2.0093, IQR=[-2.1466, -1.8493]
+  sst_305_307: n=67, median dlnq=-1.7983, IQR=[-2.1517, -1.4393]
+
+  Main descriptive comparison: sst_303_305 minus sst_300_303
+  Δ median dlnq = -0.1771 -> more negative / steeper
+  Δ q_UUT mean = 0.0000
+  Δ q_LUT mean = 0.0001
+  Δ mean OLR = -8.1451
+
+2. SST x omega regime comparison
+---------------------------------
+  strong_ascent: sst_303_305 minus sst_300_303: Δ median dlnq=-0.1387 -> more negative / steeper; n_warm=344
+  weak_ascent: sst_303_305 minus sst_300_303: Δ median dlnq=-0.2113 -> more negative / steeper; n_warm=337
+  neutral: sst_303_305 minus sst_300_303: Δ median dlnq=-0.2024 -> more negative / steeper; n_warm=324
+  weak_subsidence: sst_303_305 minus sst_300_303: Δ median dlnq=-0.1852 -> more negative / steeper; n_warm=339
+  strong_subsidence: sst_303_305 minus sst_300_303: Δ median dlnq=-0.1849 -> more negative / steeper; n_warm=353
+
+3. OLR diagnostic note
+----------------------
+  OLR was summarized only as a diagnostic, not as a primary grouping axis. Use these values to interpret convective/radiative state, but keep the main benchmark organized by SST and omega.
+  Highest OLR-bin dominance among SST x omega groups: sst_bin=sst_297_300, omega_bin=weak_subsidence, dominant_olr_bin=clear_sky, fraction=0.981.
+
+4. Recommended next step
+------------------------
+  Run bootstrap_intervals.py over aggregated samples, not raw profiles, to place confidence intervals on these dlnq differences.

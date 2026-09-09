@@ -1,0 +1,14 @@
+# Verified working configuration: every script in this archive has been run
+# successfully under these versions.
+#
+# Python 3.14.0
+numpy==2.4.6
+pandas==3.0.5
+xarray==2026.7.0
+netCDF4==1.7.4
+matplotlib==3.11.1
+
+# MLS screening only (reading Level-2 HDF-EOS5 granules):
+# h5py
+# ERA5 GRIB conversion only:
+# eccodes

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software or the derived data, please cite it as below."
+title: "Analysis code and derived aggregates for: Upper-Tropospheric Water-Vapor Profiles Steepen With Sea Surface Temperature and Turn Near 303 K Over Tropical Oceans"
+abstract: >-
+  Analysis code and derived cell-regime aggregates supporting a two-layer
+  upper-tropospheric water-vapor profile-shape benchmark (dlnq) built from Aura
+  MLS version-5 humidity collocated with ERA5 sea-surface temperature and 500 hPa
+  vertical velocity and NOAA interpolated outgoing longwave radiation, covering
+  2 August 2004 to 30 December 2023.
+type: software
+authors:
+  - name: Neel Topkar
+    affiliation: "University High School, Irvine, California, USA"
+    email: neeltopkar@gmail.com
+keywords:
+  - upper-tropospheric water vapor
+  - sea-surface temperature
+  - Aura Microwave Limb Sounder
+  - tropical convection
+  - climate model evaluation
+license: MIT
+version: 1.0.0
+repository-code: "https://github.com/NeelTopkar/utwv-dlnq-benchmark"

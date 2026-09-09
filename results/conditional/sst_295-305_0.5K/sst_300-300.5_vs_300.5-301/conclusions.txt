@@ -1,0 +1,56 @@
+CONDITIONAL dlnq ANALYSIS REPORT
+================================
+
+Metric:
+  dlnq = ln(q_UUT / q_LUT)
+  Less negative / closer to zero means a flatter vertical q profile.
+  More negative means a steeper decrease from LUT to UUT.
+
+Important caveat:
+  These are descriptive results; bootstrap_intervals.py is still needed for confidence intervals.
+
+1. SST-only steepening summary
+------------------------------
+  sst_295_295.5: n=567, median dlnq=-1.4737, IQR=[-1.8097, -1.2097]
+  sst_295.5_296: n=687, median dlnq=-1.4803, IQR=[-1.8248, -1.2407]
+  sst_296_296.5: n=826, median dlnq=-1.4824, IQR=[-1.8040, -1.2288]
+  sst_296.5_297: n=988, median dlnq=-1.4913, IQR=[-1.7982, -1.2380]
+  sst_297_297.5: n=1201, median dlnq=-1.5130, IQR=[-1.8111, -1.2589]
+  sst_297.5_298: n=1406, median dlnq=-1.5181, IQR=[-1.7857, -1.2769]
+  sst_298_298.5: n=1648, median dlnq=-1.5337, IQR=[-1.7998, -1.3000]
+  sst_298.5_299: n=1843, median dlnq=-1.5573, IQR=[-1.7975, -1.3237]
+  sst_299_299.5: n=1977, median dlnq=-1.5776, IQR=[-1.8244, -1.3621]
+  sst_299.5_300: n=2111, median dlnq=-1.6067, IQR=[-1.8385, -1.3841]
+  sst_300_300.5: n=2244, median dlnq=-1.6557, IQR=[-1.8945, -1.4454]
+  sst_300.5_301: n=2313, median dlnq=-1.7395, IQR=[-1.9431, -1.5299]
+  sst_301_301.5: n=2303, median dlnq=-1.8153, IQR=[-2.0044, -1.6167]
+  sst_301.5_302: n=2262, median dlnq=-1.8950, IQR=[-2.0616, -1.7245]
+  sst_302_302.5: n=2172, median dlnq=-1.9654, IQR=[-2.1118, -1.8046]
+  sst_302.5_303: n=2019, median dlnq=-2.0102, IQR=[-2.1520, -1.8456]
+  sst_303_303.5: n=1692, median dlnq=-2.0146, IQR=[-2.1556, -1.8477]
+  sst_303.5_304: n=1365, median dlnq=-2.0218, IQR=[-2.1862, -1.8042]
+  sst_304_304.5: n=828, median dlnq=-1.9468, IQR=[-2.2071, -1.6928]
+  sst_304.5_305: n=282, median dlnq=-1.8900, IQR=[-2.2890, -1.5754]
+
+  Main descriptive comparison: sst_300.5_301 minus sst_300_300.5
+  Δ median dlnq = -0.0838 -> more negative / steeper
+  Δ q_UUT mean = 0.0000
+  Δ q_LUT mean = 0.0000
+  Δ mean OLR = -5.0332
+
+2. SST x omega regime comparison
+---------------------------------
+  strong_ascent: sst_300.5_301 minus sst_300_300.5: Δ median dlnq=-0.0841 -> more negative / steeper; n_warm=467
+  weak_ascent: sst_300.5_301 minus sst_300_300.5: Δ median dlnq=-0.1044 -> more negative / steeper; n_warm=461
+  neutral: sst_300.5_301 minus sst_300_300.5: Δ median dlnq=-0.0731 -> more negative / steeper; n_warm=458
+  weak_subsidence: sst_300.5_301 minus sst_300_300.5: Δ median dlnq=-0.0867 -> more negative / steeper; n_warm=461
+  strong_subsidence: sst_300.5_301 minus sst_300_300.5: Δ median dlnq=-0.0847 -> more negative / steeper; n_warm=466
+
+3. OLR diagnostic note
+----------------------
+  OLR was summarized only as a diagnostic, not as a primary grouping axis. Use these values to interpret convective/radiative state, but keep the main benchmark organized by SST and omega.
+  Highest OLR-bin dominance among SST x omega groups: sst_bin=sst_297_297.5, omega_bin=neutral, dominant_olr_bin=clear_sky, fraction=0.996.
+
+4. Recommended next step
+------------------------
+  Run bootstrap_intervals.py over aggregated samples, not raw profiles, to place confidence intervals on these dlnq differences.

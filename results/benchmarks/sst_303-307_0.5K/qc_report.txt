@@ -1,0 +1,119 @@
+BENCHMARK QC REPORT
+================================================================================
+
+Input dataset
+--------------------------------------------------------------------------------
+Input path: data/aggregates/tropical_oceans/sst_303-307_0.5K/aggregated_gridcells.nc
+Detected sample dimension: sample
+Detected pressure dimension: plev
+Input samples: 4,281
+Input pressure levels: 5
+
+Pressure range: 146.780 to 316.228 hPa
+
+Detected variables
+--------------------------------------------------------------------------------
+sample_dim: sample
+plev_dim: plev
+q_mean_profile: q_mean_profile
+q_median_profile: q_median_profile
+lnq_mean_profile: lnq_mean_profile
+lnq_median_profile: lnq_median_profile
+sst_bin: sst_bin
+sst_bin_center: sst_bin_center
+omega_bin: omega_bin
+olr_bin: dominant_olr_bin
+mean_sst: mean_sst
+median_sst: median_sst
+mean_omega: mean_omega
+median_omega: median_omega
+mean_olr: mean_olr
+median_olr: median_olr
+q_uut_mean: q_uut_mean
+q_lut_mean: q_lut_mean
+dlnq_mean: dlnq_mean
+dlnq_median: dlnq_median
+n_profiles: n_profiles
+n_olr_total: n_olr_total
+olr_count_vars: {'deep_convective': 'n_olr_deep_convective', 'convective_high_cloud': 'n_olr_convective_high_cloud', 'transition': 'n_olr_transition', 'clear_sky': 'n_olr_clear_sky'}
+olr_fraction_vars: {'deep_convective': 'frac_olr_deep_convective', 'convective_high_cloud': 'frac_olr_convective_high_cloud', 'transition': 'frac_olr_transition', 'clear_sky': 'frac_olr_clear_sky'}
+n_valid_q_profile: n_valid_q_profile
+n_valid_lnq_profile: n_valid_lnq_profile
+q_profile_std: q_profile_std
+lnq_profile_std: lnq_profile_std
+day: None
+lat_bin_center: lat_bin_center
+lon_bin_center: lon_bin_center
+
+Aggregation diagnostic support
+--------------------------------------------------------------------------------
+n_olr_total variable: n_olr_total
+OLR count variables found: {'deep_convective': 'n_olr_deep_convective', 'convective_high_cloud': 'n_olr_convective_high_cloud', 'transition': 'n_olr_transition', 'clear_sky': 'n_olr_clear_sky'}
+OLR fraction variables found: {'deep_convective': 'frac_olr_deep_convective', 'convective_high_cloud': 'frac_olr_convective_high_cloud', 'transition': 'frac_olr_transition', 'clear_sky': 'frac_olr_clear_sky'}
+n_valid_q_profile variable: n_valid_q_profile
+n_valid_lnq_profile variable: n_valid_lnq_profile
+q_profile_std variable: q_profile_std
+lnq_profile_std variable: lnq_profile_std
+
+Filtered sample metadata
+--------------------------------------------------------------------------------
+Usable cell-regime aggregates after filtering: 4,281
+Minimum samples per benchmark group: 10
+
+Benchmark group creation
+--------------------------------------------------------------------------------
+Benchmark groups created: 33
+sst_only: created 8, skipped 0 below sample threshold
+sst_by_omega: created 25, skipped 15 below sample threshold
+
+Group counts by type
+--------------------------------------------------------------------------------
+group_type
+sst_by_omega    25
+sst_only         8
+Name: count, dtype: int64
+
+SST bins present
+--------------------------------------------------------------------------------
+sst_bin
+sst_303.5_304    6
+sst_303_303.5    6
+sst_304.5_305    6
+sst_304_304.5    6
+sst_305_305.5    6
+sst_305.5_306    1
+sst_306.5_307    1
+sst_306_306.5    1
+Name: count, dtype: int64
+
+Omega bins present
+--------------------------------------------------------------------------------
+omega_bin
+ALL                  8
+neutral              5
+strong_ascent        5
+strong_subsidence    5
+weak_ascent          5
+weak_subsidence      5
+Name: count, dtype: int64
+
+Output dataset
+--------------------------------------------------------------------------------
+Output benchmark groups: 33
+Output pressure levels: 5
+
+Physical range checks
+--------------------------------------------------------------------------------
+mean_sst: min=303.191, median=304.153, max=306.688
+mean_omega: min=-0.237288, median=-0.000906845, max=0.127239
+mean_olr: min=232.438, median=255.96, max=276.87
+mean_dlnq: min=-2.09144, median=-1.92807, max=-1.20028
+n_samples: min=11, median=164, max=1692
+n_olr_total: min=18, median=1596, max=178198
+frac_olr_deep_convective: min=0.0282828, median=0.165732, max=0.370489
+frac_olr_clear_sky: min=0.407899, median=0.640427, max=0.857143
+
+Notes
+--------------------------------------------------------------------------------
+Descriptive envelopes are not final uncertainty intervals. bootstrap_intervals.py bootstraps cell-regime aggregates.
+OLR was summarized diagnostically inside each benchmark group. It was not used as a default grouping axis.

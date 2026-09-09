@@ -1,0 +1,37 @@
+BOOTSTRAP UNCERTAINTY REPORT
+============================
+
+Replicates: 1000   Seed: 12345   CI: 2.5-97.5 percentile
+Resampling: BLOCK bootstrap by 'spatial' (whole blocks of correlated samples resampled together).
+Reference SST bin bounds: (300.0, 303.0)
+Warm SST bin bounds:      (303.0, 305.0)
+
+Metric: dlnq = ln(q_UUT / q_LUT). Less negative = flatter profile.
+A warm-minus-reference difference is 'robust' when its 95% CI excludes 0.
+
+1. Headline pooled comparison (all omega)
+-----------------------------------------
+  sst_303_305 minus sst_300_303:
+    Δ mean dlnq = -0.1158  95% CI [-0.2192, -0.0394]  -> ROBUST (CI excludes 0)
+    Δ q_UUT = 0.00000491 (9.2%)   Δ q_LUT = 0.00007697 (14.6%)
+    Δ mean OLR = -4.81 W/m^2
+    (q_UUT: 0.00005345 -> 0.00005836;  q_LUT: 0.00052639 -> 0.00060336)
+    Interpretation: both layers moisten but q_LUT rises faster -> profile STEEPENS
+    n_warm = 360, n_ref = 360
+
+2. Comparison within each omega regime
+--------------------------------------
+  neutral: sst_303_305 − sst_300_303  Δ mean dlnq = -0.1352  [-0.2368, -0.0407] -> robust  (n_warm=72)
+  strong_ascent: sst_303_305 − sst_300_303  Δ mean dlnq = -0.0611  [-0.1228, -0.0076] -> robust  (n_warm=72)
+  strong_subsidence: sst_303_305 − sst_300_303  Δ mean dlnq = -0.1223  [-0.2199, -0.0337] -> robust  (n_warm=72)
+  weak_ascent: sst_303_305 − sst_300_303  Δ mean dlnq = -0.1296  [-0.2271, -0.0454] -> robust  (n_warm=72)
+  weak_subsidence: sst_303_305 − sst_300_303  Δ mean dlnq = -0.1310  [-0.2351, -0.0393] -> robust  (n_warm=72)
+
+Caveat on independence
+----------------------
+  These CIs come from a BLOCK bootstrap by 'spatial', which keeps
+  correlated samples together and is more honest than i.i.d. when that
+  axis carries autocorrelation. Note it controls correlation along ONE
+  axis only; the other axis (and any block with few members) can still
+  leave residual dependence. Compare against an 'iid' run to see how much
+  the spatial structure widens the intervals.

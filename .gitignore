@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Editors
+.idea/
+.vscode/
+.DS_Store
+
+# Word lock files
+~$*
+
+# Large intermediate data that is not redistributed.
+# The reduced counterparts (profiles_reduced.nc) ARE tracked.
+collocated/
+**/profiles.nc
+
+# Matplotlib cache
+.matplotlib/
+
+# Driver output. Both run_warm_pool_*.py rebuild this tree from the data
+# included here, so it is not distributed.
+results/warm_pool/

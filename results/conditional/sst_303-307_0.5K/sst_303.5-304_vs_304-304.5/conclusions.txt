@@ -1,0 +1,44 @@
+CONDITIONAL dlnq ANALYSIS REPORT
+================================
+
+Metric:
+  dlnq = ln(q_UUT / q_LUT)
+  Less negative / closer to zero means a flatter vertical q profile.
+  More negative means a steeper decrease from LUT to UUT.
+
+Important caveat:
+  These are descriptive results; bootstrap_intervals.py is still needed for confidence intervals.
+
+1. SST-only steepening summary
+------------------------------
+  sst_303_303.5: n=1692, median dlnq=-2.0146, IQR=[-2.1556, -1.8477]
+  sst_303.5_304: n=1365, median dlnq=-2.0218, IQR=[-2.1862, -1.8042]
+  sst_304_304.5: n=828, median dlnq=-1.9468, IQR=[-2.2071, -1.6928]
+  sst_304.5_305: n=282, median dlnq=-1.8900, IQR=[-2.2890, -1.5754]
+  sst_305_305.5: n=66, median dlnq=-1.8563, IQR=[-2.1551, -1.4698]
+  sst_305.5_306: n=21, median dlnq=-1.4766, IQR=[-1.6348, -1.3927]
+  sst_306_306.5: n=16, median dlnq=-1.3984, IQR=[-1.8403, -1.1834]
+  sst_306.5_307: n=11, median dlnq=-1.2949, IQR=[-1.6442, -0.8246]
+
+  Main descriptive comparison: sst_304_304.5 minus sst_303.5_304
+  Δ median dlnq = 0.0750 -> less negative / flatter
+  Δ q_UUT mean = 0.0000
+  Δ q_LUT mean = 0.0000
+  Δ mean OLR = 2.9784
+
+2. SST x omega regime comparison
+---------------------------------
+  strong_ascent: sst_304_304.5 minus sst_303.5_304: Δ median dlnq=-0.0009 -> nearly unchanged descriptively; n_warm=181
+  weak_ascent: sst_304_304.5 minus sst_303.5_304: Δ median dlnq=0.0766 -> less negative / flatter; n_warm=148
+  neutral: sst_304_304.5 minus sst_303.5_304: Δ median dlnq=0.0895 -> less negative / flatter; n_warm=148
+  weak_subsidence: sst_304_304.5 minus sst_303.5_304: Δ median dlnq=0.0699 -> less negative / flatter; n_warm=164
+  strong_subsidence: sst_304_304.5 minus sst_303.5_304: Δ median dlnq=0.0721 -> less negative / flatter; n_warm=187
+
+3. OLR diagnostic note
+----------------------
+  OLR was summarized only as a diagnostic, not as a primary grouping axis. Use these values to interpret convective/radiative state, but keep the main benchmark organized by SST and omega.
+  Highest OLR-bin dominance among SST x omega groups: sst_bin=sst_305.5_306, omega_bin=strong_ascent, dominant_olr_bin=clear_sky, fraction=1.000.
+
+4. Recommended next step
+------------------------
+  Run bootstrap_intervals.py over aggregated samples, not raw profiles, to place confidence intervals on these dlnq differences.

@@ -1,0 +1,35 @@
+BOOTSTRAP UNCERTAINTY REPORT
+============================
+
+Replicates: 1000   Seed: 12345   CI: 2.5-97.5 percentile
+Resampling: i.i.d. bootstrap of cell-regime aggregates (NOT raw profiles).
+Reference SST bin bounds: (297.0, 300.0)
+Warm SST bin bounds:      (300.0, 303.0)
+
+Metric: dlnq = ln(q_UUT / q_LUT). Less negative = flatter profile.
+A warm-minus-reference difference is 'robust' when its 95% CI excludes 0.
+
+1. Headline pooled comparison (all omega)
+-----------------------------------------
+  sst_300_303 minus sst_297_300:
+    Δ mean dlnq = -0.2316  95% CI [-0.2502, -0.2131]  -> ROBUST (CI excludes 0)
+    Δ q_UUT = 0.00001032 (27.7%)   Δ q_LUT = 0.00015220 (57.8%)
+    Δ mean OLR = -16.67 W/m^2
+    (q_UUT: 0.00003731 -> 0.00004763;  q_LUT: 0.00026325 -> 0.00041545)
+    Interpretation: both layers moisten but q_LUT rises faster -> profile STEEPENS
+    n_warm = 2377, n_ref = 2174
+
+2. Comparison within each omega regime
+--------------------------------------
+  neutral: sst_300_303 − sst_297_300  Δ mean dlnq = -0.2195  [-0.2626, -0.1721] -> robust  (n_warm=474)
+  strong_ascent: sst_300_303 − sst_297_300  Δ mean dlnq = -0.2518  [-0.2920, -0.2115] -> robust  (n_warm=475)
+  strong_subsidence: sst_300_303 − sst_297_300  Δ mean dlnq = -0.2289  [-0.2774, -0.1868] -> robust  (n_warm=477)
+  weak_ascent: sst_300_303 − sst_297_300  Δ mean dlnq = -0.2180  [-0.2559, -0.1782] -> robust  (n_warm=475)
+  weak_subsidence: sst_300_303 − sst_297_300  Δ mean dlnq = -0.2416  [-0.2776, -0.2038] -> robust  (n_warm=476)
+
+Caveat on independence
+----------------------
+  This is an i.i.d. resample of cell-regime aggregates. Neighboring gridcells
+  are spatially correlated, so these CIs are likely a lower bound on the
+  true uncertainty. Re-run with BOOTSTRAP_METHOD='block' and
+  BLOCK_BY='spatial' to check robustness.
