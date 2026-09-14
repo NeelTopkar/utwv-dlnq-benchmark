@@ -49,9 +49,9 @@ def main() -> None:
         os.makedirs(out_dir, exist_ok=True)
         for fname, dim in FILES:
             ip = os.path.join(DS5, in_fold, fname)
-            # This step reads the full tropical-ocean per-profile files, which are too large to distribute; see the README for how to obtain them.
+            # This step reads the full tropical-ocean per-profile files, which are too large to distribute and are available from the author on request.
             if not os.path.exists(ip):
-                print(f"[skip] {ip} not present (not distributed in the public archive; see README)")
+                print(f"[skip] {ip} not present (not distributed in the public archive; available from the author on request)")
                 continue
             ds = xr.open_dataset(ip)
             sub, kept, total = subset(ds, dim)
