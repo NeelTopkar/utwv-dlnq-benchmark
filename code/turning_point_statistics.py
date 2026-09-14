@@ -254,7 +254,7 @@ WP_05_SCR = _profiles("warm_pool")
 TROP_05_SCR = _profiles("tropical_oceans")
 
 
-# Skip a section whose input is not distributed, rather than crashing. The aggregate files are included in the public archive; the per-profile files that the per-day re-weighting needs are not (see README).
+# Skip a section whose input is not distributed, rather than crashing. The aggregate files are included in the public archive; the per-profile files that the per-day re-weighting needs are not (available from the author on request).
 def _run_if_present(fn, name, path):
     if os.path.exists(path):
         fn(name, path)
