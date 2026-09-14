@@ -45,7 +45,7 @@ def _resolve(path):
     if os.path.exists(alt):
         return alt
     raise FileNotFoundError(
-        f"neither {path} nor its reduced counterpart was found; see README")
+        f"neither {path} nor its reduced counterpart was found; available from the author on request")
 
 
 def available(path):
@@ -155,7 +155,7 @@ if __name__ == "__main__":
                             ("TROPICS 0.5 K", TROP_SCR, "fig_coverage_tropics.png")]:
         if not available(path):
             print(f"\n[skip] {name}: per-profile file not present "
-                  f"(not distributed in the public archive; see README)")
+                  f"(not distributed in the public archive; available from the author on request)")
             continue
         clearsky_and_baseline(name, path)
         layer_boundary(name, path)
