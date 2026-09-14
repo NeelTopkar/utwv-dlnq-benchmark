@@ -9,8 +9,10 @@ abstract: >-
   2 August 2004 to 30 December 2023.
 type: software
 authors:
-  - name: Neel Topkar
+  - family-names: Topkar
+  - given-names: Neel
     affiliation: "University High School, Irvine, California, USA"
+    orcid: https://orcid.org/0009-0004-0084-9378
     email: neeltopkar@gmail.com
 keywords:
   - upper-tropospheric water vapor
