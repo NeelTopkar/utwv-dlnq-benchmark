@@ -81,7 +81,7 @@ def _resolve(path):
     if os.path.exists(alt):
         return alt
     raise FileNotFoundError(
-        f"neither {path} nor its reduced counterpart was found; see README")
+        f"neither {path} nor its reduced counterpart was found; available from the author on request")
 
 
 # ---------------------------------------------------------------- data loading
@@ -422,7 +422,7 @@ if __name__ == "__main__":
                                  ("TROPICS", TROP_SCR, COARSE_TROP)]:
         if not _available(path):
             print(f"\n[skip] {domain}: per-profile file not present "
-                  f"(not distributed in the public archive; see README)")
+                  f"(not distributed in the public archive; available from the author on request)")
             continue
         run(domain, path, oni)
         if _available(coarse):
