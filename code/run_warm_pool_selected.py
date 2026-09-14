@@ -256,7 +256,7 @@ def subset_experiment(exp: Experiment) -> tuple[Path, Path]:
                 if shipped is None:
                     raise FileNotFoundError(
                         f"Neither {src} nor a warm-pool per-profile file in "
-                        f"{WARMPOOL_PROFILE_DIR / exp.aggregate_folder} was found; see README")
+                        f"{WARMPOOL_PROFILE_DIR / exp.aggregate_folder} was found; available from the author on request")
                 screened = shipped
                 continue
             raise FileNotFoundError(f"Missing required aggregated file: {src}")
@@ -626,7 +626,7 @@ def main() -> None:
         if not tropics_profiles.exists() and _shipped_warm_pool_profiles(exp) is None:
             skipped.append(exp.tag)
             print(f"[skip] {exp.tag}: no per-profile file (not distributed in the public "
-                  f"archive; see README)")
+                  f"archive; available from the author on request)")
             continue
 
         record: dict = {"experiment": exp, "conditional_dirs": [], "interval_dirs": []}
