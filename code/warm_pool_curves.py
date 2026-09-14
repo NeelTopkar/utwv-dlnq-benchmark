@@ -38,7 +38,7 @@ def _profile_file(folder):
     reduced = os.path.join(folder, "profiles_reduced.nc")
     if os.path.exists(reduced):
         return reduced
-    raise FileNotFoundError(f"no per-profile file in {folder}; see README")
+    raise FileNotFoundError(f"no per-profile file in {folder}; available from the author on request")
 
 
 # Bin labels: strings in the full files, integer codes in the reduced ones.
