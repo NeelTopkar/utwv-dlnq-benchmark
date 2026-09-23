@@ -453,6 +453,10 @@ def plot_weighting(table: pd.DataFrame, path: Path, title: str) -> None:
     ax.set_title(title)
     ax.grid(True, alpha=0.3)
     ax.invert_yaxis()
+    # Lower right is empty on the inverted axis, so the note cannot hide the minima near 303 K.
+    ax.text(0.98, 0.04, "INVERTED Y-AXIS: more-negative dlnq plots higher",
+            transform=ax.transAxes, ha="right", va="bottom", fontweight="bold",
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="0.4"))
     ax.legend()
     fig.tight_layout()
     fig.savefig(path, dpi=200, bbox_inches="tight")
@@ -524,7 +528,10 @@ def run_weighting_analysis(exp: Experiment, screened_path: Path) -> Path:
             "n_profiles": "n_profiles_q_lut",
         }
     )
-    q_table = pd.merge(q_uut, q_lut, on=["sst_bin", "sst_center"], how="outer")
+    # An outer merge re-sorts rows by the text label, which puts "sst_300.5_301" before
+    # "sst_300_300.5"; restore numeric order so the plotted lines join adjacent bins.
+    q_table = (pd.merge(q_uut, q_lut, on=["sst_bin", "sst_center"], how="outer")
+               .sort_values("sst_center").reset_index(drop=True))
     q_table.to_csv(out_dir / "q_uut_lut_decomposition_by_sst.csv", index=False)
     plot_q_decomposition(
         q_table,
