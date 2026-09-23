@@ -21,6 +21,6 @@ keywords:
   - tropical convection
   - climate model evaluation
 license: MIT
-version: 1.0.0
+version: 1.0.1
 repository-code: "https://github.com/NeelTopkar/utwv-dlnq-benchmark"
-doi: 10.5281/zenodo.22763033
+doi: 10.5281/zenodo.22670365
